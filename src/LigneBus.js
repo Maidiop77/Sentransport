@@ -1,17 +1,34 @@
-import './LigneBus.css';
-function LigneBus({ numero, depart, arrivee, arrets }) {
+import "./LigneBus.css";
+
+function LigneBus({
+  numero,
+  depart,
+  arrivee,
+  arrets,
+  estSelectionnee,
+  onClick,
+}) {
   return (
-    <div className="ligne-bus">
-      <div className="ligne-numero">{numero}</div>
+    <div
+      className={`ligne-bus ${
+        estSelectionnee
+          ? "ligne-bus-active"
+          : ""
+      }`}
+      onClick={onClick}
+    >
+      <div className="ligne-numero">
+        {numero}
+      </div>
 
       <div className="ligne-info">
-        <div className="ligne-trajet">
-          {depart}  {arrivee}
-        </div>
+        <span className="ligne-trajet">
+          {depart} &rarr; {arrivee}
+        </span>
 
-        <div className="ligne-arrets">
+        <span className="ligne-arrets">
           {arrets} arrets
-        </div>
+        </span>
       </div>
     </div>
   );
